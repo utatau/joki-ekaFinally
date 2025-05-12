@@ -1,0 +1,11 @@
+__ci_last_regenerate|i:1746863206;_ci_previous_url|s:30:"http://localhost:8080/kategori";login_session|a:2:{s:7:"id_user";s:7:"USR-001";s:5:"level";s:5:"admin";}Pesan|s:304:"
+            <script>
+            $(document).ready(function() {
+                Swal.fire({
+                    title: "Berhasil diubah!",
+                    icon: "success",
+                    confirmButtonColor: "#4e73df",
+                });
+            });
+            </script>
+        ";__ci_vars|a:1:{s:5:"Pesan";s:3:"old";}

@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\DokumenModel;
+use App\Models\FilemanagerModel;
+use CodeIgniter\Controller;
+
+class Filemanager extends Controller
+{
+    protected $dokumenModel;
+    protected $filemanagerModel;
+
+    public function __construct()
+    {
+        $this->dokumenModel = new DokumenModel();
+        $this->filemanagerModel = new FilemanagerModel();
+    }
+
+    public function index()
+    {
+        $data = [
+            'title' => 'File',
+            'dokumen' => count($this->dokumenModel->dataJoin())
+        ];
+
+        echo view('template/header', $data);
+        echo view('filemanager/index');
+        echo view('template/footer');
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'File',
+            'dokumen' => $this->filemanagerModel->detail_join($id, 'dokumen')->getResult()
+        ];
+
+        echo view('template/header', $data);
+        echo view('filemanager/detail');
+        echo view('template/footer');
+    }
+
+    public function getData()
+    {
+        $id = $this->request->getPost('id');
+        $data = $this->dokumenModel
+            ->detail_data(['id_dokumen' => $id], 'dokumen')
+            ->getResult();
+
+        return $this->response->setJSON($data);
+    }
+}
