@@ -12,13 +12,19 @@ class Kategori extends Controller
 
     public function __construct()
     {
+        $this->session = session();
+        $this->request =  \Config\Services::Request();
         helper(['url', 'form']);
         $this->kategoriModel = new KategoriModel();
         $this->session = session();
+        
     }
 
     public function index()
     {
+         if (!session()->has('login_session')) {
+            return redirect()->to('login');
+        }
         $data = [
             'title' => 'Kategori',
             'kategori' => $this->kategoriModel->get_kategori()

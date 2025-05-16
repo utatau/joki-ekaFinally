@@ -19,6 +19,9 @@ class Pengaturan extends Controller
 
     public function index()
     {
+        if (!session()->has('login_session')) {
+            return redirect()->to('login');
+        }
         $data = [
             'title' => 'Pengaturan',
             'user' => $this->pengaturanModel->data()->getResult()

@@ -22,6 +22,9 @@ class Dokumen extends Controller
 
     public function index()
     {
+        if (!session()->has('login_session')) {
+            return redirect()->to('login');
+        }
         $dokumen = $this->dokumenModel->dataJoin();
         $kategori = $this->kategoriModel->data();
         $data = [

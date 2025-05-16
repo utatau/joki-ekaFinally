@@ -13,12 +13,17 @@ class Filemanager extends Controller
 
     public function __construct()
     {
+        $this->session = session();
+        $this->request =  \Config\Services::Request();
         $this->dokumenModel = new DokumenModel();
         $this->filemanagerModel = new FilemanagerModel();
     }
 
     public function index()
     {
+        if (!session()->has('login_session')) {
+            return redirect()->to('login');
+        }
         $data = [
             'title' => 'File',
             'dokumen' => count($this->dokumenModel->dataJoin())
