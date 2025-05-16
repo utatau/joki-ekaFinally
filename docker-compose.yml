@@ -1,0 +1,15 @@
+services:
+  eka-arsip:
+    container_name: eka
+    build: .
+    ports:
+      - 9080:8080
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - eka
+    depens:
+      - db
+network:
+  eka:
+    driver: brigde
