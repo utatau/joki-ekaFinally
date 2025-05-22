@@ -1,15 +1,35 @@
 services:
   eka-arsip:
-    container_name: eka
     build: .
+    container_name: eka
     ports:
       - 9080:8080
     volumes:
       - ./:/var/www/html
     networks:
       - eka
-    depens:
+    depends_on:
       - db
-network:
+    environment:
+      - PHP_OPCACHE=1
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: UTAGANTENG
+      MYSQL_DATABASE: ci4_database
+      MYSQL_USER: eka
+      MYSQL_PASSWORD: UTAGANTENG
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - eka
+networks:
   eka:
-    driver: brigde
+    driver: bridge
+volumes:
+  db_data:
+    driver: local
