@@ -11,7 +11,7 @@
     <div class="container d-flex justify-content-center align-items-center vh-100 rounded-3">
         <div class="col-xl-6 col-lg-8 ">
             <div class="text-center">
-                <h1 class="h4 text-white mb-4 font-weight-bold">SISTEM INFORMASI<br>PENGARSIPAN DIGIAL
+                <h1 class="h4 text-white mb-4 font-weight-bold">SISTEM INFORMASI<br>PENGARSIPAN DIGITAL
                 </h1>
             </div>
             <div class="card o-hidden border-0 shadow-lg my-3 py-3 ">
