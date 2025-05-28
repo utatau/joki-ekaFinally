@@ -20,7 +20,7 @@
                                 <th>Tanggal Upload</th>
                                 <th>Masa Berlaku</th>
                                 <th>File</th>
-                                <?php if ($this->session->userdata('login_session')['level'] == 'admin' || $this->session->userdata('login_session')['level'] == 'staff'): ?>
+                                <?php if (session()->get('login_session')['level'] == 'admin' || session()->get('login_session')['level'] == 'staff'): ?>
                                     <th width="1%">Aksi</th>
                                 <?php endif; ?>
                             </tr>
@@ -37,7 +37,7 @@
                                     <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->tgl_upload ?></td>
                                     <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->masa_berlaku ?></td>
                                     <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->file ?></td>
-                                    <?php if ($this->session->userdata('login_session')['level'] == 'staff'): ?>
+                                    <?php if (session()->get('login_session')['level'] == 'staff'): ?>
                                         <td>
                                             <center>
                                                 <a href="#" onclick="detail('<?= $d->id_dokumen ?>')"
@@ -59,8 +59,8 @@
 </div>
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/filemanager.js"></script>
-<?php if ($this->session->flashdata('Pesan')): ?>
-    <?= $this->session->flashdata('Pesan') ?>
+<?php if (session()->getFlashdata('Pesan')): ?>
+    <?= session()->getFlashdata('Pesan') ?>
 <?php else: ?>
     <script>
         $(document).ready(function() {

@@ -24,9 +24,10 @@ class Filemanager extends Controller
         if (!session()->has('login_session')) {
             return redirect()->to('login');
         }
+        $dokumen = $this->dokumenModel->dataJoin();
         $data = [
             'title' => 'File',
-            'dokumen' => count($this->dokumenModel->dataJoin())
+            'dokumen' => $dokumen
         ];
 
         echo view('template/header', $data);
