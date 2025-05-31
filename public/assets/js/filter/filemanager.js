@@ -17,7 +17,7 @@ $(document).ready(function () {
 function filter() {
     var tglawal = $("[name='tglawal']").val();
     var tglakhir = $("[name='tglakhir']").val();
-    if (tglawal != '' && tglakhir != '') {
+    if (tglawal != '') {
         filterBm(tglawal, tglakhir);
     } else {
         validasi("Tanggal Filter wajib di isi!", "warning");
@@ -39,7 +39,7 @@ function refresh() {
 
 function reset() {
     $("[name='tglawal']").val("");
-    $("[name='tglakhir']").val("");
+    // $("[name='tglakhir']").val("");
     ambilBm();
 }
 

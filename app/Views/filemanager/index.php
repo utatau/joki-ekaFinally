@@ -35,36 +35,11 @@ function tgl_indo($tanggal){
                                 <input name="tglawal" id="datepicker1" autocomplete="off" placeholder="tanggal mulai"
                                     class="form-control border-1 small" value="">
                                 <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" id="date1">
+                                    <button class="btn btn-secondary" type="button" id="date1" onclick="filter()">
                                         <i class="fas fa-calendar fa-sm"></i>
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 mb-4">
-                            <div class="input-group">
-                                <input name="tglakhir" id="datepicker2" autocomplete="off" placeholder="tanggal akhir"
-                                    class="form-control border-1 small" value="">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" id="date1">
-                                        <i class="fas fa-calendar fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg mb-4">
-                            <a href="#" class="btn btn-md btn-primary btn-icon-split mb-4" onclick="filter()">
-                                <span class="text text-white">Filter</span>
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </a>
-                            <a href="#" class="btn btn-md btn-secondary btn-icon-split mb-4" onclick="reset()">
-                                <span class="text text-white">Reset</span>
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-undo"></i>
-                                </span>
-                            </a>
                         </div>
                     </div>
     <div class="col-lg-12 mb-4" id="container">
