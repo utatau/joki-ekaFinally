@@ -1,3 +1,24 @@
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
+?>
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <div class="d-sm-flex">
@@ -16,7 +37,7 @@
                 <div class="card shadow border-bottom-secondary mb-4">
                     <div class="card-body d-sm-flex">
                         <div class="col-lg-3">
-                            <iframe width="1780em" height="800em"
+                            <iframe width="1550px" height="800px"
                                 src="<?= base_url() ?>assets/upload/dokumen/<?= $d->file ?>" alt="">
                         </div>
                     </div>
@@ -33,7 +54,7 @@
 
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 
-<?php if ($this->session->flashdata('Pesan')): ?>
+<?php if (session()->getFlashdata('Pesan')): ?>
 
 <?php else: ?>
     <script>

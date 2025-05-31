@@ -1,10 +1,47 @@
 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <span class="text-white-50 p-3">
             <input type="date" name="cekout" class="form-control shadow-none">
         </span>
-    </div>
-
+    </div> -->
+    <div class="row">
+                        <div class="col-lg-3 mb-4">
+                            <div class="input-group">
+                                <input name="tglawal" id="datepicker1" autocomplete="off" placeholder="tanggal mulai"
+                                    class="form-control border-1 small" value="">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button" id="date1">
+                                        <i class="fas fa-calendar fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-4">
+                            <div class="input-group">
+                                <input name="tglakhir" id="datepicker2" autocomplete="off" placeholder="tanggal akhir"
+                                    class="form-control border-1 small" value="">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button" id="date1">
+                                        <i class="fas fa-calendar fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg mb-4">
+                            <a href="#" class="btn btn-md btn-primary btn-icon-split mb-4" onclick="filter()">
+                                <span class="text text-white">Filter</span>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-md btn-secondary btn-icon-split mb-4" onclick="reset()">
+                                <span class="text text-white">Reset</span>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-undo"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
     <div class="col-lg-12 mb-4" id="container">
         <div class="card border-bottom-secondary shadow mb-4">
             <div class="card-body">
@@ -26,29 +63,6 @@
                             </tr>
                         </thead>
                         <tbody style="cursor:pointer;" id="tbody">
-                            <?php $no = 1;
-                            foreach ($dokumen as $d): ?>
-                                <tr>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $no++ ?>.</td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->kode_rak ?></td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->nama_tenaga_krj ?></td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->kpj ?></td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->sub_kategori ?></td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->tgl_upload ?></td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->masa_berlaku ?></td>
-                                    <td onclick="'<?= $d->id_dokumen ?>'"><?= $d->file ?></td>
-                                    <?php if (session()->get('login_session')['level'] == 'staff'): ?>
-                                        <td>
-                                            <center>
-                                                <a href="#" onclick="detail('<?= $d->id_dokumen ?>')"
-                                                    class="btn btn-circle btn-success btn-sm">
-                                                    <i class="fas fa-info"></i>
-                                                </a>
-                                            </center>
-                                        </td>
-                                    <?php endif; ?>
-                                </tr>
-                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -59,6 +73,22 @@
 </div>
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/filemanager.js"></script>
+<script src="<?= base_url(); ?>assets/js/filter/filemanager.js"></script>
+<script src="<?= base_url(); ?>assets/plugin/datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    $('#datepicker1').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+    });
+
+    $('#datepicker2').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+    });
+</script>
+
+
 <?php if (session()->getFlashdata('Pesan')): ?>
     <?= session()->getFlashdata('Pesan') ?>
 <?php else: ?>

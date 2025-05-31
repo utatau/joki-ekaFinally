@@ -159,7 +159,7 @@ function formatuta($tanggal)
                         </select>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" name="masa_berlaku" id="masa_berlaku" id="masa_berlaku" type="hidden">
+                        <input class="form-control" name="masa_berlaku" id="masa_berlaku" id="masa_berlaku" readonly>
                     </div>
                     <!-- <div class="form-group">
                         <label>File</label>

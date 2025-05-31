@@ -37,9 +37,10 @@ class Filemanager extends Controller
 
     public function detail($id)
     {
+        $dokumen = $this->dokumenModel->dataJoin();
         $data = [
             'title' => 'File',
-            'dokumen' => $this->filemanagerModel->detail_join($id, 'dokumen')->getResult()
+            'dokumen' => $dokumen
         ];
 
         echo view('template/header', $data);
@@ -56,4 +57,27 @@ class Filemanager extends Controller
 
         return $this->response->setJSON($data);
     }
+
+    public function getFilemanager()
+    {
+        try {
+            $data = $this->filemanagerModel->dataJoin()->getResult();
+            return $this->response->setJSON($data);
+        } catch (\Throwable $e) {
+            return $this->response->setStatusCode(500)
+                                  ->setJSON(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function filterFilemanager($tglawal, $tglakhir)
+    {
+        try {
+            $data = $this->filemanagerModel->lapdata($tglawal, $tglakhir)->getResult();
+            return $this->response->setJSON($data);
+        } catch (\Throwable $e) {
+            return $this->response->setStatusCode(500)
+                                  ->setJSON(['error' => $e->getMessage()]);
+        }
+    }
+
 }

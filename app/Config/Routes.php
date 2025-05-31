@@ -61,6 +61,11 @@ $routes->get('/filemanager','Filemanager::index');
 $routes->get('/filemanager/(:any)','Filemanager::detail/$1');
 
 
+// filemanager
+$routes->get('/Filemanager/getFilemanager', 'Filemanager::getFilemanager');
+$routes->post('/Filemanager/filterFilemanager', 'Filemanager::filterFilemanager');
+$routes->get('/Filemanager/filterFilemanager/(:any)/(:any)', 'Filemanager::filterFilemanager/$1/$2');
+
 
 // logout
 $routes->post('/login/logout','Login::logout');
