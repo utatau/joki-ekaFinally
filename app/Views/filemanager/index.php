@@ -1,3 +1,28 @@
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+
+	// variabel pecahkan 1 = tanggal
+	// variabel pecahkan 0 = bulan
+	// variabel pecahkan 2 = tahun
+
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
+?>
 <div class="container-fluid">
     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <span class="text-white-50 p-3">

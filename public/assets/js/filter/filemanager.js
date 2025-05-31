@@ -1,6 +1,17 @@
 $(document).ready(function () {
     ambilBm();
 });
+$(document).ready(function () {
+    $.fn.dataTable.ext.errMode = 'none';
+
+    $('#dtHorizontalExample').on('error.dt', function (e, settings, techNote, message) {
+        console.log('DataTables Ajax error ditangkap:', message);
+    });
+
+    ambilBm();
+});
+
+
 
 
 function filter() {
@@ -57,7 +68,10 @@ function ambilBm() {
         ],
         "destroy": true
     });
-
+    t.on('error.dt', function (e, settings, techNote, message) {
+        console.log('DataTables Ajax error:', message);
+        e.preventDefault();
+    });
     t.on('order.dt search.dt', function () {
         t.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
@@ -91,6 +105,11 @@ function filterBm(tglawal, tglakhir) {
             { "data": "file" },
         ],
         "destroy": true
+    });
+
+    t.on('error.dt', function (e, settings, techNote, message) {
+        console.log('DataTables Ajax error:', message);
+        e.preventDefault();
     });
 
     t.on('order.dt search.dt', function () {
