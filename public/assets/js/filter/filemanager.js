@@ -65,6 +65,17 @@ function ambilBm() {
             { "data": "tgl_upload" },
             { "data": "masa_berlaku" },
             { "data": "file" },
+            {
+                "data": "id_dokumen",
+                "render": function (data, type, row) {
+                    return `
+                <center>
+                    <a href="#" onclick="detail('${data}')" class="btn btn-circle btn-success btn-sm">
+                        <i class="fas fa-info"></i>
+                    </a>
+                </center>`;
+                }
+            }
         ],
         "destroy": true
     });
@@ -103,6 +114,17 @@ function filterBm(tglawal, tglakhir) {
             { "data": "tgl_upload" },
             { "data": "masa_berlaku" },
             { "data": "file" },
+            {
+                "data": "id_dokumen",
+                "render": function (data, type, row) {
+                    return `
+                <center>
+                    <a href="#" onclick="detail('${data}')" class="btn btn-circle btn-success btn-sm">
+                        <i class="fas fa-info"></i>
+                    </a>
+                </center>`;
+                }
+            }
         ],
         "destroy": true
     });
