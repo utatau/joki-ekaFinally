@@ -140,7 +140,7 @@ $this->dokumenModel->ubah_data($where, $data, 'dokumen');
   
 
 
- public function getData()
+    public function getData()
     {
         $id = $this->request->getPost('id');
         $where = ['id_dokumen' => $id];

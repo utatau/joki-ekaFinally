@@ -140,4 +140,8 @@ function filterBm(tglawal, tglakhir) {
 
     $('.dataTables_length').addClass('bs-select');
 }
+function detail(id) {
+    const base_url = $('#baseurl').val();
+    window.location.href = base_url + 'filemanager/detail/' + id;
+}
 

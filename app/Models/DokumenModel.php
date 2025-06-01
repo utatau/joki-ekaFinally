@@ -129,4 +129,13 @@ public function dataJoinLike()
         $kodemax = str_pad($kode, 4, '0', STR_PAD_LEFT);
         return 'DKM-' . $kodemax;
     }
+    public function getDokumenById($id)
+{
+    return $this->db->table('dokumen d')
+        ->select('d.*, k.sub_kategori')
+        ->join('kategori k', 'k.id_kategori = d.id_kategori')
+        ->where('d.id_dokumen', $id)
+        ->get()
+        ->getRow(); 
+}
 }

@@ -36,17 +36,25 @@ class Filemanager extends Controller
     }
 
     public function detail($id)
-    {
-        $dokumen = $this->dokumenModel->dataJoin();
-        $data = [
-            'title' => 'File',
-            'dokumen' => $dokumen
-        ];
+{
+    $dokumen = $this->filemanagerModel->dataJoinById($id);
 
-        echo view('template/header', $data);
-        echo view('filemanager/detail');
-        echo view('template/footer');
+    if (!$dokumen) {
+        echo "Dokumen tidak ditemukan untuk ID: $id";
+        die;
     }
+
+    $data = [
+        'title' => 'File',
+        'dokumen' => $dokumen
+    ];
+
+    echo view('template/header', $data);
+    echo view('filemanager/detail');
+    echo view('template/footer');
+}
+
+
 
     public function getData()
     {

@@ -58,7 +58,6 @@ $routes->post('/pengaturan/proses_ubah','Pengaturan::proses_ubah/$1');
 
 // staff //
 $routes->get('/filemanager','Filemanager::index');
-$routes->get('/filemanager/(:any)','Filemanager::detail/$1');
 
 $routes->get('/filemanager/detail/(:any)','Filemanager::detail/$1');
 $routes->post('/filemanager/detail/(:any)','Filemanager::detail/$1');
