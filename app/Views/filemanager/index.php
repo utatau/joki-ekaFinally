@@ -15,33 +15,23 @@ function tgl_indo($tanggal){
 		'Desember'
 	);
 	$pecahkan = explode('-', $tanggal);
-
-	// variabel pecahkan 1 = tanggal
-	// variabel pecahkan 0 = bulan
-	// variabel pecahkan 2 = tahun
-
 	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
 }
 ?>
 <div class="container-fluid">
-    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <span class="text-white-50 p-3">
-            <input type="date" name="cekout" class="form-control shadow-none">
-        </span>
-    </div> -->
     <div class="row">
-                        <div class="col-lg-3 mb-4">
-                            <div class="input-group">
-                                <input name="tglawal" id="datepicker1" autocomplete="off" placeholder="tanggal mulai"
-                                    class="form-control border-1 small" value="">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" id="date1" onclick="filter()">
-                                        <i class="fas fa-calendar fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-lg-3 mb-4">
+            <div class="input-group">
+                <input name="tglawal" id="datepicker1" autocomplete="off" placeholder="tanggal mulai"
+                    class="form-control border-1 small" value="">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button" id="date1" onclick="filter()">
+                        <i class="fas fa-calendar fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-12 mb-4" id="container">
         <div class="card border-bottom-secondary shadow mb-4">
             <div class="card-body">

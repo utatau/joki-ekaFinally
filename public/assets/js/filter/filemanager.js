@@ -10,13 +10,10 @@ $(document).ready(function () {
 
     ambilBm();
 });
-
-
-
-
 function filter() {
     var tglawal = $("[name='tglawal']").val();
-    var tglakhir = $("[name='tglakhir']").val();
+    var tglakhir = tglawal;
+    // var tglakhir = $("[name='tglakhir']").val();
     if (tglawal != '') {
         filterBm(tglawal, tglakhir);
     } else {
@@ -107,6 +104,7 @@ function filterBm(tglawal, tglakhir) {
             "dataSrc": ""
         },
         columns: [
+            { data: null },
             { "data": "kode_rak" },
             { "data": "nama_tenaga_krj" },
             { "data": "kpj" },
