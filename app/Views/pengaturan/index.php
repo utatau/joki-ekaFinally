@@ -55,7 +55,7 @@
 <script src="<?= base_url(); ?>assets/js/validasi/formuser.js"></script>
 
 <?php if (session()->getFlashdata('Pesan')): ?>
-
+    <?= session()->getFlashdata('Pesan') ?>
 <?php else: ?>
     <script>
         $(document).ready(function() {
@@ -72,23 +72,6 @@
                 }
             }).then((result) => {
 
-            })
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            let timerInterval
-            Swal.fire({
-                title: 'Memuat...',
-                timer: 1000,
-                onBeforeOpen: () => {
-                    Swal.showLoading()
-                },
-                onClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                $("#profil").addClass("bounceIn");
             })
         });
     </script>

@@ -55,6 +55,12 @@ $routes->post('/pengaturan/ubah/(:any)','Pengaturan::ubah/$1');
 $routes->get('/pengaturan/proses_ubah','Pengaturan::proses_ubah/$1');
 $routes->post('/pengaturan/proses_ubah','Pengaturan::proses_ubah/$1');
 
+// $routes->get('/pengaturan/proses_ubah/(:any)','Pengaturan::proses_ubah/$1');
+$routes->post('/pengaturan/proses_ubah/(:any)','Pengaturan::proses_ubah/$1');
+
+$routes->post('/pengaturan/ubah/(:any)','Pengaturan::ubah/$1');
+$routes->get('/pengaturan/ubah/(:any)','Pengaturan::ubah/$1');
+
 
 // staff //
 $routes->get('/filemanager','Filemanager::index');

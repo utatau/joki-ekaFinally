@@ -18,8 +18,8 @@ public $sessionSavePath = WRITEPATH . 'session';
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
-
+    public string $baseURL = '';
+   
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.

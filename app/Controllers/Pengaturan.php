@@ -43,42 +43,55 @@ public function ubah($id)
     echo view('pengaturan/index', $data);
     echo view('template/footer');
 }
-
-
-
-
-
-
-
-
     public function proses_ubah()
     {
         $user = $this->request->getPost('user');
         $kode = $this->request->getPost('iduser');
         $pass = $this->request->getPost('pwd');
+        $passl = $this->request->getPost('kpwd');
         $passLama = $this->request->getPost('pwdLama');
 
         $passUpdate = $pass === '' ? $passLama : md5($pass);
-
+        
         $data = [
             'username' => $user,
             'password' => $passUpdate
         ];
-
+        
         $this->pengaturanModel->ubah_data(['id_user' => $kode], $data, 'user');
-
-        $this->session->setFlashdata('Pesan', '
-            <script>
+        if($pass == $passl){
+        $this->session->setFlashdata('Pesan', $this->successAlert('Password berhasil diubah!'));
+        } else if($pass != $passl) {
+            $this->session->setFlashdata('Pesan', $this->failAlert('Konfirmasi password tidak sesuai!'));
+        } else if ($pass == '' || $pass1 == ''){
+            $this->session->setFlashdata('Pesan', $this->failAlert('Password tidak boleh kosong'));
+        }
+       
+        return redirect()->to('/pengaturan/ubah/'.$kode);
+    }
+    private function successAlert($message)
+    {
+        return "<script>
             $(document).ready(function() {
                 swal.fire({
-                    title: "Berhasil diubah!",
-                    icon: "success",
-                    confirmButtonColor: "#4e73df",
+                    title: \"$message\",
+                    icon: \"success\",
+                    confirmButtonColor: \"#4e73df\",
                 });
             });
-            </script>
-        ');
-
-        return redirect()->to('/home');
+        </script>";
+    }
+    private function failAlert($message)
+    {
+        return "<script>
+            $(document).ready(function() {
+                swal.fire({
+                    title: \"$message\",
+                    icon: \"error\",
+                    confirmButtonColor: \"#e74a3b\",
+                });
+            });
+        </script>";
     }
 }
+

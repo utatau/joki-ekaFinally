@@ -104,31 +104,31 @@ public function proses_tambah()
         $fileBaru = $this->request->getFile('fileLama    ');
         $fileLama = $this->request->getPost('fileLamaNama');
 
-if ($fileBaru && $fileBaru->isValid() && !$fileBaru->hasMoved()) {
-    $newName = $fileBaru->getRandomName();
-    $fileBaru->move(FCPATH . 'assets/upload/dokumen', $newName);
+            if ($fileBaru && $fileBaru->isValid() && !$fileBaru->hasMoved()) {
+                $newName = $fileBaru->getRandomName();
+                $fileBaru->move(FCPATH . 'assets/upload/dokumen', $newName);
 
-    if ($fileLama != 'pdf.pdf') {
-        @unlink(FCPATH . 'assets/upload/dokumen/' . $fileLama);
-    }
-} else {
-    $newName = $fileLama;
-}
+                if ($fileLama != 'pdf.pdf') {
+                    @unlink(FCPATH . 'assets/upload/dokumen/' . $fileLama);
+                }
+            } else {
+                $newName = $fileLama;
+            }
 
-        $masa_berlaku = $this->request->getPost('tambah_masa_berlaku') ?: $this->request->getPost('masa_berlaku_lama');
+            $masa_berlaku = $this->request->getPost('tambah_masa_berlaku') ?: $this->request->getPost('masa_berlaku_lama');
 
-$where = ['id_dokumen' => $this->request->getPost('id_dokumen')];
-$data = [
-    'kode_rak' => $this->request->getPost('kode_rak'),
-    'nama_tenaga_krj' => $this->request->getPost('nama_tenaga_krj'),
-    'kpj' => $this->request->getPost('kpj'),
-    'id_kategori' => $this->request->getPost('kategori'),
-    'tgl_upload' => $this->request->getPost('tgl_upload'),
-    'masa_berlaku' => $this->request->getPost('tambah_masa_berlaku') ?: $this->request->getPost('masa_berlaku_lama'),
-    'file' => $newName
-];
+            $where = ['id_dokumen' => $this->request->getPost('id_dokumen')];
+            $data = [
+                'kode_rak' => $this->request->getPost('kode_rak'),
+                'nama_tenaga_krj' => $this->request->getPost('nama_tenaga_krj'),
+                'kpj' => $this->request->getPost('kpj'),
+                'id_kategori' => $this->request->getPost('kategori'),
+                'tgl_upload' => $this->request->getPost('tgl_upload'),
+                'masa_berlaku' => $this->request->getPost('tambah_masa_berlaku') ?: $this->request->getPost('masa_berlaku_lama'),
+                'file' => $newName
+            ];
 
-$this->dokumenModel->ubah_data($where, $data, 'dokumen');
+        $this->dokumenModel->ubah_data($where, $data, 'dokumen');
 
         $this->session->setFlashdata('Pesan', $this->successAlert('Berhasil diubah!'));
 
