@@ -23,8 +23,8 @@ function ambilData(id) {
             $('#tgl_upload_ubah').val(hasil[0].tgl_upload);
             $('#masa_berlaku_ubah').val(hasil[0].masa_berlaku);
             $('#masa_berlaku_lama_ubah').val(hasil[0].masa_berlaku);
-            $('#fileLamaNama_ubah').val(hasil[0].file);
-            $('#fileLama_ubah').val('');
+            $('#fileLamaNama').val(hasil[0].file);
+            // $('#fileBaru').val('');
             $('#ubah').modal('show');
         }
     });

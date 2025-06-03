@@ -22,7 +22,7 @@ $routes->get('/dokumen','Dokumen::index');
 $routes->post('/dokumen/proses_tambah','Dokumen::proses_tambah/$1');
 $routes->post('/dokumen/proses_hapus/(:any)','Dokumen::proses_hapus/$1');
 $routes->get('/dokumen/proses_hapus/(:any)','Dokumen::proses_hapus/$1');
-$routes->post('/dokumen/proses_ubah','Dokumen::proses_ubah');
+$routes->post('/dokumen/proses_ubah','Dokumen::proses_ubah/$1');
 
 
 // kategori

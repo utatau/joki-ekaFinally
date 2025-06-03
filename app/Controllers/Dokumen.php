@@ -55,13 +55,10 @@ class Dokumen extends Controller
 public function proses_tambah()
 {
     $file = $this->request->getFile('dokumen');
-    
     $kode = $this->dokumenModel->buat_kode();
-    
     $namaFile = $file->getName();
-
     if ($file->isValid() && !$file->hasMoved()) {
-        $newName = $file->getRandomName();
+        $newName = $namaFile;
         $file->move(FCPATH . 'assets/upload/dokumen', $newName); 
     } else {
         $newName = 'pdf.pdf';
@@ -101,19 +98,20 @@ public function proses_tambah()
     public function proses_ubah()
     {
         $kode = $this->request->getPost('id_dokumen');
-        $fileBaru = $this->request->getFile('fileLama    ');
+        $fileBaru = $this->request->getFile('fileBaru');
         $fileLama = $this->request->getPost('fileLamaNama');
-
             if ($fileBaru && $fileBaru->isValid() && !$fileBaru->hasMoved()) {
-                $newName = $fileBaru->getRandomName();
+                $newName = $fileBaru->getName(); 
                 $fileBaru->move(FCPATH . 'assets/upload/dokumen', $newName);
 
-                if ($fileLama != 'pdf.pdf') {
-                    @unlink(FCPATH . 'assets/upload/dokumen/' . $fileLama);
+                $pathLama = FCPATH . 'assets/upload/dokumen/' . $fileLama;
+                if ($fileLama !== 'pdf.pdf' && file_exists($pathLama)) {
+                    unlink($pathLama);
                 }
             } else {
                 $newName = $fileLama;
             }
+
 
             $masa_berlaku = $this->request->getPost('tambah_masa_berlaku') ?: $this->request->getPost('masa_berlaku_lama');
 

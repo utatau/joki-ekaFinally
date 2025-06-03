@@ -184,7 +184,7 @@ function formatuta($tanggal)
 <!-- form ubah -->
 <div class="modal fade" id="ubah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" enctype="multipart/form-data">
     <form action="<?= base_url() ?>dokumen/proses_ubah" name="myFormUpdate" method="POST"
-        onsubmit="return validateFormUpdate()">
+        onsubmit="return validateFormUpdate()" enctype="multipart/form-data">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
@@ -258,9 +258,9 @@ function formatuta($tanggal)
                     
                     <div class="form-group"><label>File</label>
                         <div class="custom-file">
-                         <input type="file" name="fileLama" class="custom-file-input" id="fileLama">
-                         <label class="custom-file-label" for="fileLama">Kosongkan jika tidak ingin diubah</label>
-                        <input type="hidden" class="form-control" name="fileLamaNama" id="fileLamaNama_ubah">
+                         <input type="file" name="fileBaru" class="custom-file-input" id="fileBaru">
+                         <label class="custom-file-label" for="fileLamaNama">Kosongkan jika tidak ingin diubah</label>
+                        <input type="hidden" class="form-control" name="fileLamaNama" id="fileLamaNama">
                       </div>
                     </div>
 
