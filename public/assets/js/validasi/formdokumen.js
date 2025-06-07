@@ -79,8 +79,6 @@ function fileIsValid(fileName) {
 
 function VerifyFileNameAndFileSize() {
     var file = document.getElementById('fileBaru').files[0];
-
-
     if (file != null) {
         var fileName = file.name;
         if (fileIsValid(fileName) == false) {

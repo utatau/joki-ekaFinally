@@ -57,11 +57,20 @@ public function proses_tambah()
     $file = $this->request->getFile('dokumen');
     $kode = $this->dokumenModel->buat_kode();
     $namaFile = $file->getName();
-    if ($file->isValid() && !$file->hasMoved()) {
-        $newName = $namaFile;
-        $file->move(FCPATH . 'assets/upload/dokumen', $newName); 
+    $ext = pathinfo($namaFile, PATHINFO_EXTENSION);
+    $allowedExtensions = ['pdf', 'docx'];
+    // if ($file->isValid() && !$file->hasMoved()) {
+    //     $newName = $namaFile;
+    //     $file->move(FCPATH . 'assets/upload/dokumen', $newName); 
+    // } else {
+    //     $newName = 'pdf.pdf';
+    // }
+    if ($file->isValid() && !$file->hasMoved() && in_array($ext, $allowedExtensions)) {
+    $newName = $namaFile;
+    $file->move(FCPATH . 'assets/upload/dokumen', $newName); 
     } else {
-        $newName = 'pdf.pdf';
+        $this->session->setFlashdata('Pesan', $this->errorAlert('File tidak valid'));
+        return redirect()->back();
     }
 
     $data = [
