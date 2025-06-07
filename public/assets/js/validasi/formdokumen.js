@@ -67,6 +67,8 @@ function fileIsValid(fileName) {
     switch (ext) {
         case 'pdf':
         case 'xlsx':
+        case 'PDF':
+        case 'XLSX':
             break;
         default:
             this.value = '';
@@ -76,21 +78,21 @@ function fileIsValid(fileName) {
 }
 
 function VerifyFileNameAndFileSize() {
-    var file = document.getElementById('GetFile').files[0];
+    var file = document.getElementById('fileBaru').files[0];
 
 
     if (file != null) {
         var fileName = file.name;
         if (fileIsValid(fileName) == false) {
             validasi('Format bukan PDF/EXCEL!', 'warning');
-            document.getElementById('GetFile').value = null;
+            document.getElementById('fileBaru').value = null;
             return false;
         }
         var content;
         var size = file.size;
         if ((size != null) && ((size / (1024 * 1024)) > 3)) {
             validasi('Ukuran maximum 5MB', 'warning');
-            document.getElementById('GetFile').value = null;
+            document.getElementById('fileBaru').value = null;
             return false;
         }
 

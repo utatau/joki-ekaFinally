@@ -258,7 +258,7 @@ function formatuta($tanggal)
                     
                     <div class="form-group"><label>File</label>
                         <div class="custom-file">
-                         <input type="file" name="fileBaru" class="custom-file-input" id="fileBaru">
+                         <input type="file" name="fileBaru" class="custom-file-input" id="fileBaru" accept=".pdf,.xlsx">
                          <label class="custom-file-label" for="fileLamaNama">Kosongkan jika tidak ingin diubah</label>
                         <input type="hidden" class="form-control" name="fileLamaNama" id="fileLamaNama">
                       </div>
