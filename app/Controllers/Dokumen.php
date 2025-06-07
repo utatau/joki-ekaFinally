@@ -87,7 +87,7 @@ public function proses_tambah()
     if ($file && $file->isValid() && !$file->hasMoved()) {
         $ext = strtolower($file->getClientExtension());
         if (in_array($ext, ['pdf', 'xlsx'])) {
-            $newName = $namaFile;
+            $newName = $file;
             $file->move(FCPATH . 'assets/upload/dokumen', $newName);
         } else {
             $this->session->setFlashdata('Pesan', $this->errorAlert('Hanya PDF dan XLSX yang diperbolehkan!'));
