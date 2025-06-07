@@ -52,50 +52,16 @@ class Dokumen extends Controller
         echo view('template/footer');
     }
 
-// public function proses_tambah()
-// {
-//     $file = $this->request->getFile('dokumen');
-//     $kode = $this->dokumenModel->buat_kode();
-//     $namaFile = $file->getName();
-//     if ($file->isValid() && !$file->hasMoved()) {
-//         $newName = $namaFile;
-//         $file->move(FCPATH . 'assets/upload/dokumen', $newName); 
-//     } else {
-//         $newName = 'pdf.pdf';
-//     }
-
-//     $data = [
-//         'id_dokumen' => $kode,
-//         'kode_rak' => $this->request->getPost('kode_rak'),
-//         'nama_tenaga_krj' => $this->request->getPost('nama_tenaga_krj'),
-//         'kpj' => $this->request->getPost('kpj'),
-//         'id_kategori' => $this->request->getPost('kategori'),
-//         'tgl_upload' => $this->request->getPost('tgl_upload'),
-//         'masa_berlaku' => $this->request->getPost('masa_berlaku'),
-//         'file' => $newName
-//     ];
-
-//     $this->dokumenModel->tambah_data($data, 'dokumen'); 
-//     $this->session->setFlashdata('Pesan', $this->successAlert('Berhasil ditambahkan!'));
-//     return redirect()->to('/dokumen');
-// }
 public function proses_tambah()
 {
     $file = $this->request->getFile('dokumen');
     $kode = $this->dokumenModel->buat_kode();
-
-    if ($file && $file->isValid() && !$file->hasMoved()) {
-        $ext = strtolower($file->getClientExtension());
-        if (in_array($ext, ['pdf', 'xlsx'])) {
-            $newName = $file;
-            $file->move(FCPATH . 'assets/upload/dokumen', $newName);
-        } else {
-            $this->session->setFlashdata('Pesan', $this->errorAlert('Hanya PDF dan XLSX yang diperbolehkan!'));
-            return redirect()->back();
-        }
+    $namaFile = $file->getName();
+    if ($file->isValid() && !$file->hasMoved()) {
+        $newName = $namaFile;
+        $file->move(FCPATH . 'assets/upload/dokumen', $newName); 
     } else {
-        $this->session->setFlashdata('Pesan', $this->errorAlert('File tidak valid atau terjadi kesalahan upload.'));
-        return redirect()->back();
+        $newName = 'pdf.pdf';
     }
 
     $data = [
@@ -113,6 +79,40 @@ public function proses_tambah()
     $this->session->setFlashdata('Pesan', $this->successAlert('Berhasil ditambahkan!'));
     return redirect()->to('/dokumen');
 }
+// public function proses_tambah()
+// {
+//     $file = $this->request->getFile('dokumen');
+//     $kode = $this->dokumenModel->buat_kode();
+
+//     if ($file && $file->isValid() && !$file->hasMoved()) {
+//         $ext = strtolower($file->getClientExtension());
+//         if (in_array($ext, ['pdf', 'xlsx'])) {
+//             $newName = $kode . '.' . $ext;
+//             $file->move(FCPATH . 'assets/upload/dokumen', $newName);
+//         } else {
+//             $this->session->setFlashdata('Pesan', $this->errorAlert('Hanya PDF dan XLSX yang diperbolehkan!'));
+//             return redirect()->back();
+//         }
+//     } else {
+//         $this->session->setFlashdata('Pesan', $this->errorAlert('File tidak valid atau terjadi kesalahan upload.'));
+//         return redirect()->back();
+//     }
+
+//     $data = [
+//         'id_dokumen' => $kode,
+//         'kode_rak' => $this->request->getPost('kode_rak'),
+//         'nama_tenaga_krj' => $this->request->getPost('nama_tenaga_krj'),
+//         'kpj' => $this->request->getPost('kpj'),
+//         'id_kategori' => $this->request->getPost('kategori'),
+//         'tgl_upload' => $this->request->getPost('tgl_upload'),
+//         'masa_berlaku' => $this->request->getPost('masa_berlaku'),
+//         'file' => $newName
+//     ];
+
+//     $this->dokumenModel->tambah_data($data, 'dokumen'); 
+//     $this->session->setFlashdata('Pesan', $this->successAlert('Berhasil ditambahkan!'));
+//     return redirect()->to('/dokumen');
+// }
 
 
 
