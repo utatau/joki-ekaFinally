@@ -12,8 +12,8 @@ $(document).ready(function () {
 });
 function filter() {
     var tglawal = $("[name='tglawal']").val();
-    var tglakhir = tglawal;
-    // var tglakhir = $("[name='tglakhir']").val();
+    var tglakhir = "9999-12-12";
+    // var tglakhir = $("[name='tglakhir']").val("9999-12-12");
     if (tglawal != '') {
         filterBm(tglawal, tglakhir);
     } else {
@@ -36,7 +36,7 @@ function refresh() {
 
 function reset() {
     $("[name='tglawal']").val("");
-    // $("[name='tglakhir']").val("");
+    $("[name='tglakhir']").val("9999-12-12");
     ambilBm();
 }
 

@@ -23,7 +23,7 @@ function tgl_indo($tanggal){
         <div class="col-lg-3 mb-4">
             <div class="input-group">
                 <input name="tglawal" id="datepicker1" autocomplete="off" placeholder="tanggal mulai"
-                    class="form-control border-1 small" value="">
+                    class="form-control border-1 small" value="2000-12-12">
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="button" id="date1" onclick="filter()">
                         <i class="fas fa-calendar fa-sm"></i>
