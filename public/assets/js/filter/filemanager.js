@@ -1,25 +1,19 @@
 $(document).ready(function () {
-    ambilBm();
-});
-$(document).ready(function () {
-    $.fn.dataTable.ext.errMode = 'none';
+    const tglawal = $("[name='tglawal']").val();
+    const tglakhir = "9999-12-12";
 
-    $('#dtHorizontalExample').on('error.dt', function (e, settings, techNote, message) {
-        console.log('DataTables Ajax error ditangkap:', message);
-    });
-
-    ambilBm();
-});
-function filter() {
-    var tglawal = $("[name='tglawal']").val();
-    var tglakhir = "9999-12-12";
-    // var tglakhir = $("[name='tglakhir']").val("9999-12-12");
-    if (tglawal != '') {
+    if (tglawal !== '') {
         filterBm(tglawal, tglakhir);
     } else {
-        validasi("Tanggal Filter wajib di isi!", "warning");
+        ambilBm();
     }
-}
+
+    $.fn.dataTable.ext.errMode = 'none';
+    $('#dtHorizontalExample').on('error.dt', function (e, settings, techNote, message) {
+        console.log('error', message);
+    });
+});
+
 
 function validasi(judul, status) {
     swal.fire({
