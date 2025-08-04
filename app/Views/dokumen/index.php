@@ -4,9 +4,11 @@ function formatuta($tanggal)
     if ($tanggal == "9999-12-31") {
         return "Seumur Hidup";
     }
-    $tanggalSekarang = new DateTime();
+    // $tanggalSekarang = new DateTime();
 
-    $tanggalKedaluwarsa = new DateTime($tanggal);
+    // $tanggalKedaluwarsa = new DateTime($tanggal);
+    $tanggalSekarang = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
+$tanggalKedaluwarsa = new DateTime($tanggal, new DateTimeZone('Asia/Jakarta'));
 
     if ($tanggalKedaluwarsa < $tanggalSekarang) {
         return "expired";
@@ -61,9 +63,13 @@ function formatuta($tanggal)
                                     <td onclick="('<?= $d->id_dokumen ?>')"><?= $d->kpj ?></td>
                                     <td onclick="('<?= $d->id_dokumen ?>')"><?= $d->sub_kategori ?></td>
                                     <td onclick="('<?= $d->id_dokumen ?>')"><?= $d->tgl_upload ?></td>
-                                    <td onclick="('<?= $d->id_dokumen ?>')">
+                                    <!-- <td onclick="('<?= $d->id_dokumen ?>')">
                                         <?= formatuta($d->masa_berlaku) ?>
-                                    </td>
+                                    </td> -->
+                                    <td onclick="('<?= $d->id_dokumen ?>')" 
+    class="<?= formatuta($d->masa_berlaku) == 'expired' ? 'text-danger font-weight-bold' : '' ?>">
+    <?= formatuta($d->masa_berlaku) ?>
+</td>
                                     <td onclick="('<?= $d->id_dokumen ?>')"><?= $d->file ?></td>
                                     <?php if (session()->get('login_session')['level'] == 'admin'): ?>
                                         <td>
@@ -149,7 +155,7 @@ function formatuta($tanggal)
                     </div>
                     <div class="form-group">
                         <label>Masa Berlaku</label>
-                        <select class="form-control" name="#" id="uta">
+                        <select class="form-control" name="uta" id="uta">
                             <option value="1">1 Tahun</option>
                             <option value="2">2 Tahun</option>
                             <option value="3">3 Tahun</option>
@@ -252,7 +258,7 @@ function formatuta($tanggal)
                         </select>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" name="tambah_masa_berlaku" id="tambah_masa_berlaku_ubah" type="hidden" readonly>
+                        <input class="form-control" name="tambah_masa_berlaku" id="tambah_masa_berlaku_ubah" type="text" readonly>
                         <input type="hidden" class="form-control" name="masa_berlaku_lama" id="masa_berlaku_lama_ubah">
                     </div>
                     
@@ -339,7 +345,7 @@ function formatuta($tanggal)
     });
 </script>
 <script>
-    document.getElementById("perpanjang").addEventListener("change", function() {
+    document.getElementById("perpanjang_ubah").addEventListener("change", function() {
         let tahun = this.value;
         let today = new Date();
         let perpanjang;
@@ -352,7 +358,7 @@ function formatuta($tanggal)
             perpanjang = today.toISOString().split('T')[0];
         }
 
-        document.getElementById("tambah_masa_berlaku").value = perpanjang;
+        document.getElementById("tambah_masa_berlaku_ubah").value = perpanjang;
     });
 </script>
 <script>
