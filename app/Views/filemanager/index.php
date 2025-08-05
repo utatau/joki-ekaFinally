@@ -66,19 +66,6 @@ function tgl_indo($tanggal){
 <script src="<?= base_url(); ?>assets/js/filter/filemanager.js"></script>
 <script src="<?= base_url(); ?>assets/plugin/datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-<script>
-    $('#datepicker1').datepicker({
-        autoclose: true,
-        format: '2000-01-1',
-    });
-
-    $('#datepicker2').datepicker({
-        autoclose: true,
-        format: 'yyyy-mm-dd',
-    });
-</script>
-
-
 
 <?php if (session()->getFlashdata('Pesan')): ?>
     <?= session()->getFlashdata('Pesan') ?>
@@ -101,3 +88,27 @@ function tgl_indo($tanggal){
         });
     </script>
 <?php endif; ?>
+
+<script>
+    $('#datepicker1').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+    });
+
+    $('#datepicker2').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+    });
+</script>
+<script>
+    function filter() {
+        const tglawal = $("[name='tglawal']").val();
+        const tglakhir = "9999-12-12";
+
+        if (tglawal !== '') {
+            filterBm(tglawal, tglakhir);
+        } else {
+            ambilBm();
+        }
+    }
+</script>
