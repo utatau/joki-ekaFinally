@@ -58,7 +58,7 @@ public function proses_tambah()
     $kode = $this->dokumenModel->buat_kode();
     $namaFile = $file->getName();
     $ext = pathinfo($namaFile, PATHINFO_EXTENSION);
-    $allowedExtensions = ['pdf', 'docx'];
+    $allowedExtensions = ['pdf', 'xlsx'];
     // if ($file->isValid() && !$file->hasMoved()) {
     //     $newName = $namaFile;
     //     $file->move(FCPATH . 'assets/upload/dokumen', $newName); 

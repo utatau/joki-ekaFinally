@@ -67,9 +67,9 @@ $tanggalKedaluwarsa = new DateTime($tanggal, new DateTimeZone('Asia/Jakarta'));
                                         <?= formatuta($d->masa_berlaku) ?>
                                     </td> -->
                                     <td onclick="('<?= $d->id_dokumen ?>')" 
-    class="<?= formatuta($d->masa_berlaku) == 'expired' ? 'text-danger font-weight-bold' : '' ?>">
-    <?= formatuta($d->masa_berlaku) ?>
-</td>
+                                        class="<?= formatuta($d->masa_berlaku) == 'expired' ? 'text-danger font-weight-bold' : '' ?>">
+                                        <?= formatuta($d->masa_berlaku) ?>
+                                    </td>
                                     <td onclick="('<?= $d->id_dokumen ?>')"><?= $d->file ?></td>
                                     <?php if (session()->get('login_session')['level'] == 'admin'): ?>
                                         <td>
@@ -161,6 +161,11 @@ $tanggalKedaluwarsa = new DateTime($tanggal, new DateTimeZone('Asia/Jakarta'));
                             <option value="3">3 Tahun</option>
                             <option value="4">4 Tahun</option>
                             <option value="5">5 Tahun</option>
+                            <option value="6">6 Tahun</option>
+                            <option value="7">7 Tahun</option>
+                            <option value="8">8 Tahun</option>
+                            <option value="9">9 Tahun</option>
+                            <option value="10">10 Tahun</option>
                             <option value="lifetime">Seumur Hidup</option>
                         </select>
                     </div>
@@ -254,6 +259,11 @@ $tanggalKedaluwarsa = new DateTime($tanggal, new DateTimeZone('Asia/Jakarta'));
                             <option value="3">3 Tahun</option>
                             <option value="4">4 Tahun</option>
                             <option value="5">5 Tahun</option>
+                            <option value="6">6 Tahun</option>
+                            <option value="7">7 Tahun</option>
+                            <option value="8">8 Tahun</option>
+                            <option value="9">9 Tahun</option>
+                            <option value="10">10 Tahun</option>
                             <option value="lifetime">Seumur Hidup</option>
                         </select>
                     </div>
