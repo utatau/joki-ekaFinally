@@ -105,7 +105,7 @@ function tgl_indo($tanggal){
     function filter() {
         const tglawal = $("[name='tglawal']").val();
         const tglakhir = "9999-12-12";
-
+        console.log(tglawal)
         if (tglawal !== '') {
             filterBm(tglawal, tglakhir);
         } else {
@@ -113,3 +113,4 @@ function tgl_indo($tanggal){
         }
     }
 </script>
+

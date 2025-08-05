@@ -86,7 +86,7 @@ function ambilBm() {
 
 function filterBm(tglawal, tglakhir) {
     var link = $('#baseurl').val();
-    var base_url = link + 'filemanager/filterfilemanager/' + tglawal + '/' + tglakhir;
+    var base_url = link + 'Filemanager/filterFilemanager/' + tglawal + '/' + tglakhir;
 
     var t = $('#dtHorizontalExample').DataTable({
         "processing": true,
