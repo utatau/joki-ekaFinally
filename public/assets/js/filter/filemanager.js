@@ -14,7 +14,6 @@ $(document).ready(function () {
     });
 });
 
-
 function validasi(judul, status) {
     swal.fire({
         title: judul,
@@ -54,26 +53,33 @@ function ambilBm() {
             { "data": "kpj" },
             { "data": "sub_kategori" },
             { "data": "tgl_upload" },
-            { "data": "masa_berlaku" },
+            {
+                "data": "masa_berlaku",
+                "render": function (data, type, row) {
+                    return data && data.startsWith("9999-12-31") ? "Seumur Hidup" : data;
+                }
+            },
             { "data": "file" },
             {
                 "data": "id_dokumen",
                 "render": function (data, type, row) {
                     return `
-                <center>
-                    <a href="#" onclick="detail('${data}')" class="btn btn-circle btn-success btn-sm">
-                        <i class="fas fa-info"></i>
-                    </a>
-                </center>`;
+                    <center>
+                        <a href="#" onclick="detail('${data}')" class="btn btn-circle btn-success btn-sm">
+                            <i class="fas fa-info"></i>
+                        </a>
+                    </center>`;
                 }
             }
         ],
         "destroy": true
     });
+
     t.on('error.dt', function (e, settings, techNote, message) {
         console.log('DataTables Ajax error:', message);
         e.preventDefault();
     });
+
     t.on('order.dt search.dt', function () {
         t.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
@@ -82,7 +88,6 @@ function ambilBm() {
 
     $('.dataTables_length').addClass('bs-select');
 }
-
 
 function filterBm(tglawal, tglakhir) {
     var link = $('#baseurl').val();
@@ -104,17 +109,23 @@ function filterBm(tglawal, tglakhir) {
             { "data": "kpj" },
             { "data": "sub_kategori" },
             { "data": "tgl_upload" },
-            { "data": "masa_berlaku" },
+            {
+                "data": "masa_berlaku",
+                "render": function (data, type, row) {
+
+                    return data && data.startsWith("9999-12-31") ? "Seumur Hidup" : data;
+                }
+            },
             { "data": "file" },
             {
                 "data": "id_dokumen",
                 "render": function (data, type, row) {
                     return `
-                <center>
-                    <a href="#" onclick="detail('${data}')" class="btn btn-circle btn-success btn-sm">
-                        <i class="fas fa-info"></i>
-                    </a>
-                </center>`;
+                    <center>
+                        <a href="#" onclick="detail('${data}')" class="btn btn-circle btn-success btn-sm">
+                            <i class="fas fa-info"></i>
+                        </a>
+                    </center>`;
                 }
             }
         ],
@@ -134,8 +145,8 @@ function filterBm(tglawal, tglakhir) {
 
     $('.dataTables_length').addClass('bs-select');
 }
+
 function detail(id) {
     const base_url = $('#baseurl').val();
     window.location.href = base_url + 'filemanager/detail/' + id;
 }
-
