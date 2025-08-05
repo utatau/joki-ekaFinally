@@ -5,17 +5,16 @@ function formatuta($tanggal)
         return "Seumur Hidup";
     }
     // $tanggalSekarang = new DateTime();
-
     // $tanggalKedaluwarsa = new DateTime($tanggal);
     $tanggalSekarang = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
-$tanggalKedaluwarsa = new DateTime($tanggal, new DateTimeZone('Asia/Jakarta'));
+    $tanggalKedaluwarsa = new DateTime($tanggal, new DateTimeZone('Asia/Jakarta'));
 
     if ($tanggalKedaluwarsa < $tanggalSekarang) {
         return "expired";
     }
-    $selisihTahun = $tanggalKedaluwarsa->format("Y") - $tanggalSekarang->format("Y");
+    // $selisihTahun = $tanggalKedaluwarsa->format("Y") - $tanggalSekarang->format("Y");
 
-    return $selisihTahun . " Tahun";
+    return $tanggalSekarang->format('Y-m-d');
 }
 ?>
 

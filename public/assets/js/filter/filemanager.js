@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const tglawal = $("[name='tglawal']").val();
-    const tglakhir = "9999-12-12";
+    const tglakhir = "9999-12-31";
 
     if (tglawal !== '') {
         filterBm(tglawal, tglakhir);
@@ -29,7 +29,7 @@ function refresh() {
 
 function reset() {
     $("[name='tglawal']").val("");
-    $("[name='tglakhir']").val("9999-12-12");
+    $("[name='tglakhir']").val("9999-12-31");
     ambilBm();
 }
 
