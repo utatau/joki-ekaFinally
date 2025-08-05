@@ -61,6 +61,7 @@ function tgl_indo($tanggal){
     </div>
 </div>
 </div>
+
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/filemanager.js"></script>
 <script src="<?= base_url(); ?>assets/js/filter/filemanager.js"></script>
