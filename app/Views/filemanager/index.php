@@ -107,7 +107,7 @@ function tgl_indo($tanggal){
         const tglakhir = "9999-12-12";
         console.log(tglawal)
         if (tglawal !== '') {
-            filterBm(tglawal, tglakhir);
+            filterBm(tglawal, tglawal);
         } else {
             ambilBm();
         }
